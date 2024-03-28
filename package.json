@@ -10,6 +10,7 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "@radix-ui/react-avatar": "^1.0.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "jotai": "^2.7.1",
