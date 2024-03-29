@@ -1,13 +1,16 @@
-import { useState } from 'react'
-
 import StarsSelectItem, { type Stars } from './StarsSelectItem'
 
-export default function StarsSelect() {
-  const [stars, setStars] = useState<Stars>(2)
+interface StarsSelectProps {
+  stars: number
+  onSelect?: (...event: any[]) => void
+}
+
+export default function StarsSelect({ stars, onSelect }: StarsSelectProps) {
   const starsLeft = (5 - stars) as Stars
 
   function handleStarsSelectChange(starsSelected: Stars) {
-    setStars(starsSelected === stars ? 0 : starsSelected)
+    if (!onSelect) return
+    onSelect(starsSelected === stars ? 0 : starsSelected)
   }
 
   return (
