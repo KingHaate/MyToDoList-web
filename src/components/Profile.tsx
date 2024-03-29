@@ -10,24 +10,7 @@ interface ProfileProps {
 }
 
 export default function Profile({ username, level, stars }: ProfileProps) {
-  function renderStars() {
-    const starsToRender = []
-    const starsLeft = 5 - stars
-
-    for (let i = 0; i < stars; i++) {
-      starsToRender.push(
-        <Star key={i} size={32} color='#FFD334' fill='#FFD334' />,
-      )
-    }
-
-    for (let i = 0; i < starsLeft; i++) {
-      starsToRender.push(
-        <Star key={i} size={32} color='#A6A6A6' fill='#A6A6A6' />,
-      )
-    }
-
-    return starsToRender
-  }
+  const starsLeft = 5 - stars
 
   return (
     <div className='flex w-max items-center gap-12 rounded-full bg-white py-3 pl-24 pr-[6.25rem]'>
@@ -44,7 +27,14 @@ export default function Profile({ username, level, stars }: ProfileProps) {
           <Laptop color='#262626' size={28} />
           <Small>Level {level}</Small>
         </div>
-        <div className='flex gap-1'>{renderStars()}</div>
+        <div className='flex gap-1'>
+          {[...Array(stars)].map((_e, index) => (
+            <Star key={index} size={20} color='#FFD334' fill='#FFD334' />
+          ))}
+          {[...Array(starsLeft)].map((_e, index) => (
+            <Star key={index} size={20} color='#A6A6A6' fill='#A6A6A6' />
+          ))}
+        </div>
       </div>
     </div>
   )
